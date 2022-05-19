@@ -1,0 +1,85 @@
+.modal {
+  /* box-shadow: var(--shadow-2), 0 0 0 100vw rgb(0 0 0 / 0.5); */
+
+  box-shadow: 3px 3px 20px 0px rgb(0 0 0 / 0.2), 0 0 0 100vw rgb(0 0 0 / 0.3);
+
+  background: #fff;
+  color: #222;
+  border: 0;
+  border-radius: 0.25rem;
+
+  padding: 0;
+}
+
+.modal-content {
+  padding: 50px;
+}
+
+body {
+  height: 200vh;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+
+  0% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(-100vh);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(100%);
+    box-shadow: 0 0 0 100vw rgb(0 0 0 / 0.3);
+  }
+
+  100% {
+    transform: scale(0%);
+    box-shadow: 0 0 0 0vw rgb(0 0 0 / 0);
+  }
+}
+
+.modal::backdrop {
+  opacity: 0;
+}
+
+.modal[open] {
+  animation: slide-up 500ms forwards, fade-in 500ms forwards;
+}
+
+/* .modal[open]::backdrop {
+  animation: fade-in 500ms forwards;
+} */
+
+.modal[closing] {
+  display: block;
+  pointer-events: none;
+  inset: 0;
+  animation: zoom-out 500ms forwards, fade-out 500ms forwards;
+}
+
+/* .modal[closing]::backdrop {
+  animation: fade-out 500ms forwards;
+} */
